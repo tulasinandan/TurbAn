@@ -18,6 +18,6 @@ def pgeplt(rc):
     QtGui.QApplication.instance().exec_()
 
 if __name__=="__main__":
-    from TurbPlasma.Utilities.subs import create_object
+    from TurbAn.Utilities.subs import create_object
     rc=create_object()
     pgeplt(rc)

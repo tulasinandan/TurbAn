@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 def create_slice():
     import numpy as np
-    from TurbPlasma.Utilities.subs import create_object
+    from TurbAn.Utilities.subs import create_object
     from scipy.ndimage import gaussian_filter as gf
     # Create the P3D-Old Object
     rc=create_object()

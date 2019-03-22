@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import sys, os
-sys.path.insert(0,os.environ['HOME']+'/AJGAR/TurbPlasma')
+sys.path.insert(0,os.environ['HOME']+'/AJGAR/TurbAn')
 import random as rnd
 import numpy as np
 import numpy.fft as nf

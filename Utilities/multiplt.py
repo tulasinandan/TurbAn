@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from TurbPlasma.Utilities.subs import *
+from TurbAn.Utilities.subs import *
 
 def pgmultiplt(rc,variables,bs,fs,step,pgcmp,smooth,numsmooth):
     import numpy as np

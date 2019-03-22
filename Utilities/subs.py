@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 from matplotlib.ticker import AutoMinorLocator
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-sys.path.insert(0,os.environ['HOME']+'/AJGAR/TurbPlasma')
+sys.path.insert(0,os.environ['HOME']+'/AJGAR/TurbAn')
 #
 # THE FOLLOWING ROUTINE READS A GENERIC 3D ARRAY FROM A
 # DIRECT ACCESS UNFORMATTED FILE AT A GIVEN SNAPSHOT

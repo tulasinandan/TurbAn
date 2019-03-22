@@ -16,7 +16,7 @@
 def multigray(rc,variables,bs,fs,step,movieout,cmp):
     import matplotlib.pylot as plt
     import numpy as np
-    from TurbPlasma.Utilities.subs import iplt,imss
+    from TurbAn.Utilities.subs import iplt,imss
     rc.vars2load(variables)
     rcd=rc.__dict__
     
@@ -61,7 +61,7 @@ def multigray(rc,variables,bs,fs,step,movieout,cmp):
           print('Please make a valid choice')
 
 if __name__=="__main__":
-    from TurbPlasma.Utilities.subs import create_object
+    from TurbAn.Utilities.subs import create_object
     rc = create_object()
     variables=input("Variables to load, e.g. all, min, bx by bz: ").split()
     bs,fs,step = ask_for_steps(rc.numslices)
