@@ -308,3 +308,29 @@ def logints(maxval):
          break;
    
    return lst
+
+def gen_log_space(limit, n):
+   """
+   Routine to create an array of visually equidistant points in log space
+   Input:
+   	limit: the max value the function will create its list to
+   	n: the number of points in the log space
+   Output:
+   	result: A log space that are visually equidistant in a log space.
+   SOURCE: https://stackoverflow.com/questions/12418234/logarithmically-spaced-integers
+   """
+   result = [2]
+   if n>1:  # just a check to avoid ZeroDivisionError
+      ratio = (float(limit)/result[-1]) ** (1.0/(n-len(result)))
+   while len(result)<n:
+      next_value = result[-1]*ratio
+      if next_value - result[-1] >= 1:
+         result.append(next_value)
+      else:
+         result.append(result[-1]+1)
+         ratio = (float(limit)/result[-1])**(1.0/(n-len(result)))
+#  lst = map(lambda x: np.int(round(x)-1), result)
+   lst = []
+   for x in result:
+      lst.append(np.int(round(x)-1))
+   return np.array(lst)
