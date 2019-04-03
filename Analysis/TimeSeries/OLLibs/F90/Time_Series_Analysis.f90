@@ -120,5 +120,5 @@ subroutine correlation(a,b,nt,lags,nlag,dt,r,cr)
       r(k)  = l*dt
       cr(k) = (cr(k)*cnt - aav*bav)/cnt**2
    enddo
-!  cr = cr/cr(1)
+   cr = cr/cr(1)
 end subroutine correlation

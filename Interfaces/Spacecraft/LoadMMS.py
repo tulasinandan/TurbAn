@@ -1,10 +1,10 @@
 import sys
 import os
-sys.path.insert(0,os.environ['HOME']+'/AJGAR/TurbPlasma')
+sys.path.insert(0,os.environ['HOME']+'/AJGAR/TurbAn')
 import pandas as pd
 import numpy as np
-import AnalysisFunctions as af
-from . import Time_Series_Analysis as tsa
+import TurbAn.Analysis.Simulations as af
+import TurbAn.Analysis.TimeSeries.Time_Series_Analysis as tsa
 
 def create_df_ascii(dirname,chop_ends=100,hampel_filter=None,lowpass_freq=None,spacecraft=1):
    try:

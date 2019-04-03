@@ -14,7 +14,7 @@
 
 subroutine fill_gaps(time, dt, tol, ai, ln, nmd, fillval, tn, dn,counter)
    double precision, intent(in) :: fillval, dt, tol
-   integer, intent(in) :: ln, nmd
+   integer*8, intent(in) :: ln, nmd
    integer*8, intent(out) :: counter
    double precision, intent(in), dimension(ln) :: ai, time
    double precision, intent(out), dimension(ln+nmd*2) :: tn, dn
@@ -29,7 +29,7 @@ subroutine fill_gaps(time, dt, tol, ai, ln, nmd, fillval, tn, dn,counter)
          counter = counter + 1
       else
          do while (abs(time(i+1) - tn(counter-1)) > dt+tol)
-            if (tn(counter-1)+dt >= time(i+1)) then
+            if (tn(counter-1)+dt > time(i+1)) then
                EXIT
             else
                tn(counter) = tn(counter-1)+dt
