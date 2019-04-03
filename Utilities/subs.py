@@ -287,24 +287,24 @@ def calc_dep(v2lu,primitives,derived):
    return v2lu
 
 def logints(maxval):
-"""
-Returns a simple minded logarithmic integer series
-0 1 2 3 4 5 6 7 8 9 10 20 30 ... 100 200 ... 1000 2000 ...
-Input:
-        maxval: The max possible value
-Output:
-        lst: logarithmic list
-"""
-pwr=0; lst=[0]
-while True:
-   n=0
-   for i in range(1,10):
-      num=(n+i)*10**pwr
-      lst.append(num)
-      if num >= maxval:
+   """
+   Returns a simple minded logarithmic integer series
+   0 1 2 3 4 5 6 7 8 9 10 20 30 ... 100 200 ... 1000 2000 ...
+   Input:
+      maxval: The max possible value
+   Output:
+      lst: logarithmic list
+   """
+   pwr=0; lst=[0]
+   while True:
+      n=0
+      for i in range(1,10):
+         num=(n+i)*10**pwr
+         lst.append(num)
+         if num >= maxval:
+            break;
+      pwr += 1
+      if num >=maxval:
          break;
-   pwr += 1
-   if num >=maxval:
-      break;
-
-return lst
+   
+   return lst
