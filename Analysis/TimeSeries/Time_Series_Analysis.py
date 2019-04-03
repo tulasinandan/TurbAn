@@ -42,7 +42,8 @@ def gen_log_space(limit, n):
 def corr(x, y,lags,dt):
    return ftsa.correlation(x,y,lags,dt)
 def autocorr(x,lags,dt):
-   return ftsa.correlation(x,x,lags,dt)
+   r,cr=ftsa.correlation(x,x,lags,dt)
+   return r,cr/cr[0]
 def autocorrvec(x,y,z,lags,dt):
    r,rxx=autocorr(x,lags,dt)
    r,ryy=autocorr(y,lags,dt)
