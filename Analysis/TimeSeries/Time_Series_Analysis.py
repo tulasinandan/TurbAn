@@ -127,7 +127,10 @@ def sdk(series, lags, dt):
    series = series.copy()
    for i in lags:
        temp = (series.shift(-i) - series).copy()
-       coeff = temp.pow(4).mean()/(temp.pow(2).mean()**2)
+       if temp.pow(2).mean()==0:
+         coeff = np.NaN
+       else:
+         coeff = temp.pow(4).mean()/(temp.pow(2).mean()**2)
        k   += [coeff]
        tau += [i*dt]
    k = pd.Series(k)
