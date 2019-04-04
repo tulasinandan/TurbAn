@@ -1,7 +1,4 @@
 #!/bin/sh
-CFLDIR=$HOME/TurbPlasma/CFLIB
-LIBDIR=$CFLDIR/lib
-F90DIR=$CFLDIR/F90
 if [ ! $1 ]; then
 echo "Which Machine?"
 read MACH
@@ -9,14 +6,12 @@ else
 export MACH=$1
 fi
 
-cd $F90DIR
-
 if [[ "$MACH" =~ ^(flare) ]]; then
 f2py3 $(\ls *.f90) -lfftw3 -c -m faf 
 fi
 
 if [[ "$MACH" =~ ^(goose) ]]; then
-FFTWDIR=/home/tulasi/share/FFTW3/lib
+FFTWDIR=/opt/pkg/fftw/3.3.6-gcc/lib
 f2py3 $(\ls *.f90) -L$FFTWDIR -lfftw3 -c -m faf 
 fi
 
