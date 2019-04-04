@@ -12,7 +12,7 @@ fi
 
 if [[ "$MACH" =~ ^(goose) ]]; then
 FFTWDIR=/opt/pkg/fftw/3.3.6-gcc/lib
-f2py3 $(\ls *.f90) -L$FFTWDIR -lfftw3 -c -m faf 
+f2py3 --fcompiler=gnu $(\ls *.f90) -L$FFTWDIR -lfftw3 -c -m faf 
 fi
 
 if [[ "$MACH" =~ ^(darter) ]]; then
