@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import numpy as np
 from TurbAn.Interfaces.Simulations.p3d import loadparams
 from TurbAn.Analysis.Simulations import tfps
