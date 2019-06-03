@@ -164,6 +164,6 @@ def calc_pdf(series,weight=100,inc=None,Normalize=False):
 # return array of pdfs
    return bins,pdf/len(series)
 
-def pdf_inc(series,inc,weight=100):
+def pdf_inc(series,inc,**kwargs):
    tmp=(series.shift(-inc)-series).copy()
-   return calc_pdf(tmp,weight)
+   return calc_pdf(tmp,weight,**kwargs)
