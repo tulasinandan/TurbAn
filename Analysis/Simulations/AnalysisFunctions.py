@@ -185,23 +185,23 @@ def PerpSpectrum(ar,sumax=2,lenx=2*pi,leny=2*pi,lenz=2*pi):
       nnx=nx; nny=ny
       kkx=kx; kky=ky
 ## DEFINE THE KPERP VALUES AND CORRESPONDING SPECTRUM
-   fekp=np.zeros(min(nnx/2,nny/2))
+   fekp=np.zeros(min(nnx//2,nny//2))
    kp=np.zeros((nnx,nny))
    for x in range(nnx):
       for y in range(nny):
          kp[x,y]=np.sqrt(kkx[x]**2+kky[y]**2)
    if nnx == 1:
       dk=np.abs(kp[0,1]-kp[0,0])
-      kk=kp[0,nny/2:]
+      kk=kp[0,nny//2:]
    elif nny == 1:
       dk=np.abs(kp[1,0]-kp[0,0])
-      kk=kp[nnx/2:,0]
+      kk=kp[nnx//2:,0]
    else:
       dk=np.abs(kp[1,0]-kp[0,0])
-      kk=kp[nnx/2,nny/2:]
+      kk=kp[nnx//2,nny//2:]
 
    for i in range(len(fekp)):
-      fekp[i]= np.sum(np.ma.MaskedArray(ffteb, ~((kp[nx/2,i+ny/2]-dk < kp) & (kp < kp[nx/2,i+ny/2]+dk))))
+      fekp[i]= np.sum(np.ma.MaskedArray(ffteb, ~((kp[nx//2,i+ny//2]-dk < kp) & (kp < kp[nx//2,i+ny//2]+dk))))
    #for x in range(nnx):
    #   for y in range(nny):
    #      i=np.round(kp[x,y]/dk)
