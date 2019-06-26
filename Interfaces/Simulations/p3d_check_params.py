@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import numpy as np
-from TurbPlasma.Interfaces.Simulations.p3d import loadparams
-from TurbPlasma.Analysis.Simulations import tfps
+from TurbAn.Interfaces.Simulations.p3d import loadparams
+from TurbAn.Analysis.Simulations import tfps
 from sys import argv as argv
 
 def printwarn(something="SOMETHING"):

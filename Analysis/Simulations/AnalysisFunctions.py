@@ -565,8 +565,8 @@ def windowff(nslices,kind=None):
 #
 def sdk(ar,bs=1,fs=2,step=1,dx=1,ax=0,fort='y'):
    nx=np.shape(ar)[ax]
-   ark=np.zeros((fs-bs+1)/step)
-   ddx=np.zeros((fs-bs+1)/step)
+   ark=np.zeros((fs-bs+1)//step)
+   ddx=np.zeros((fs-bs+1)//step)
    for i in range(bs,fs,step):
       idx = (i-bs)/step
       tmp=np.roll(ar,i,axis=ax)      

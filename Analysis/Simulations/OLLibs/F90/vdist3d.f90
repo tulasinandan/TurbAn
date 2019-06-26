@@ -18,10 +18,15 @@ subroutine vdist3d(vx,vy,vz,lenv,nx,ny,nz,dfn)
    write(*,*) dvx,dvy,dvz
 
    do i=1,lenv
-      j=floor((vx(i)-mm(2))/dvx + 0.5)
-      k=floor((vy(i)-mm(4))/dvy + 0.5)
-      l=floor((vz(i)-mm(6))/dvz + 0.5)
-      !write(*,*) 'j,k,l',j,k,l
-      dfn(j,k,l) = dfn(j,k,l) + 1
+      if ( isnan(vx(i)) .or. isnan(vy(i)) &
+      .or. isnan(vz(i)) ) then
+         continue
+      else
+         j=floor((vx(i)-mm(2))/dvx + 0.5)
+         k=floor((vy(i)-mm(4))/dvy + 0.5)
+         l=floor((vz(i)-mm(6))/dvz + 0.5)
+         !write(*,*) 'j,k,l',j,k,l
+         dfn(j,k,l) = dfn(j,k,l) + 1
+      endif
    enddo
 end subroutine vdist3d
