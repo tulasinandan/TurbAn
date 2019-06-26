@@ -355,7 +355,7 @@ def ReducedSpec(ar,ax=2,lenx=2*pi,leny=2*pi,lenz=2*pi):
    far = nf.fftshift(nf.fftn(ar))/(nx*ny*nz); fftea=0.5*np.abs(far)**2
    ffteb=fftea.sum(axis=ax1).sum(axis=ax2)
    dk = kk[1]-kk[0]
-   return kk[nn/2:],ffteb[nn/2:]/dk
+   return kk[nn//2:],ffteb[nn//2:]/dk
 
 ##
 ## REDUCED SPECTRUM OF A VECTOR
