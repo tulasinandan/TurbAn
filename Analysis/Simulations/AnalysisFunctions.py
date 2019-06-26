@@ -568,7 +568,7 @@ def sdk(ar,bs=1,fs=2,step=1,dx=1,ax=0,fort='y'):
    ark=np.zeros((fs-bs+1)//step)
    ddx=np.zeros((fs-bs+1)//step)
    for i in range(bs,fs,step):
-      idx = (i-bs)/step
+      idx = (i-bs)//step
       tmp=np.roll(ar,i,axis=ax)      
       tmp=ar-tmp; rmsval=np.sqrt(np.mean(tmp**2))
       if rmsval != 0:
