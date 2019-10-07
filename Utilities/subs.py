@@ -28,14 +28,13 @@ def sminmax(a,prec=3):
    return '('+min+','+max+')' 
 
 def create_object():
+   import TurbAn.Interfaces.Simulations as sm
    try:
       obj=sys.argv[1]
    except:
       obj=input("At least tell me what kind of code: ")
 
-   exec('from '+obj+' import '+obj)
-   exec('myobj = '+obj)
-   rc = myobj(*sys.argv[2:])
+   rc = getattr(sm,obj)(*sys.argv[2:])
    return rc
 
 def ask_for_steps(nslices):

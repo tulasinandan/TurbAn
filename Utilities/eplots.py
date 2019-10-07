@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import matplotlib.pyplot as plt
 
 def eplt(rc,timeunit='wci',sv=None,**kwargs):
@@ -48,6 +48,9 @@ def turbeplt(rc,sv=None,**kwargs):
    plt.show()
 
 if __name__=="__main__":
+   import sys,os
+   sys.path.insert(0,os.environ['HOME']+'/AJGAR/TurbAn')
    from TurbAn.Utilities.subs import create_object
+   from TurbAn.Interfaces.Simulations import *
    rc=create_object()
    eplt(rc,timeunit='nl',sv='png',linewidth=2)

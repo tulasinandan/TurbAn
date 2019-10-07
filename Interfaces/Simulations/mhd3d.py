@@ -59,7 +59,7 @@ def pcurlz(arx,ary,dx=1.,dy=1.,dz=1.,smth=None):
 ###
 ### ----------------------------------------------------------------------------------------
 
-class spc(object):
+class mhd3d(object):
    """SPectral Code Reader: First Cut
 	First Cut - 2017/01/13
    """
