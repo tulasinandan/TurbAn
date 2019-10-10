@@ -15,7 +15,7 @@ sys.path.insert(0,os.environ['HOME']+'/AJGAR/TurbAn')
 def readsu(filename,nx,ny,nz,timeslice):
    ff=open(filename,mode='rb')
    ff.seek(8*timeslice*nx*ny*nz)
-   field = np.fromfile(ff,dtype='float64',count=nx*ny*nz).reshape(field,(nx,ny,nz),order='F')
+   field = np.fromfile(ff,dtype='float64',count=nx*ny*nz).reshape((nx,ny,nz),order='F')
    ff.close()
    return field
 
