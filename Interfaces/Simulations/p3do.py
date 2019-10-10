@@ -94,6 +94,13 @@ class p3do(object):
          'peyz', 'pexz', 'ni', 'jix', 'jiy', 'jiz', 'pixx', 'piyy', 'pizz', \
          'pixy', 'piyz', 'pixz']
          self.szl=size(self.logvars)
+      if code_type == "h":
+         self.primitives=['bx','by','bz','jix','jiy','jiz','jx','jy','jz','ni'\
+         ,'pixx','piyy','pizz','pixy','pixz','piyz','pe']
+         self.fls2l={'bx':'bx','by':'by','bz':'bz','jix':'jix','jiy':'jiy',\
+         'jiz':'jiz','jx':'jtotx','jy':'jtoty','jz':'jtotz','ni':'n','pixx':'pxx',\
+         'piyy':'pyy','pizz':'pzz','pixy':'pxy','pixz':'pxz','piyz':'pyz','pe':'pe'}
+         
 ###
 ### Method to load parameters
 ###
@@ -197,7 +204,6 @@ class p3do(object):
                self.vars2l=['bx','by','bz','jix','jiy','jiz','ni']
             else:
                self.vars2l=['bx','by','bz','jix','jiy','jiz','n']
-               self.fls2l=['bx','by','bz','jix','jiy','jiz','n']
          elif v2l[0] == 'all':
             if self.code_type in ('p', 'g'):
                self.vars2l=['bx','by','bz','ex','ey','ez','jix','jiy','jiz','jex','jey'\
@@ -206,8 +212,6 @@ class p3do(object):
             else:
                self.vars2l=['bx','by','bz','jix','jiy','jiz','jx','jy','jz','ni'\
                ,'pixx','piyy','pizz','pixy','pixz','piyz','pe']
-               self.fls2l=['bx','by','bz','jix','jiy','jiz','jtotx','jtoty','jtotz','n'\
-               ,'pxx','pyy','pzz','pxy','pxz','pyz','pe']
          else:
                self.vars2l=v2l
       else:
@@ -218,7 +222,7 @@ class p3do(object):
          if self.code_type == 'p':
             exec('self.'+i+'f=open("'+self.rundir+'/FPData/'+i+'","rb")')
          elif self.code_type == 'h':
-            exec('self.'+i+'f=open("'+self.rundir+'/FPData/'+self.fls2l[self.vars2l.index(i)]+'f","rb")')
+            exec('self.'+i+'f=open("'+self.rundir+'/FPData/'+self.fls2l[i]+'","rb")')
          elif self.code_type == 'g':
             exec('self.'+i+'f=open("'+self.rundir+'/staging/movie.'+i+'.'+self.filenum+'","rb")')
       # If 'b' or 'bb' data type, load minmax for each loaded variable
@@ -227,8 +231,8 @@ class p3do(object):
          for i in self.vars2l:
             exec('self.'+i+'minmax=d[self.logvars.index("'+i+'")::len(self.logvars),:]')
       # Find out the number of slices for the open file
-      exec('self.'+self.vars2l[0]+'f.seek(0,2)')
-      exec('filesize=self.'+self.vars2l[0]+'f.tell()')
+      self.__dict__[self.vars2l[0]+'f'].seek(0,2)
+      filesize=self.__dict__[self.vars2l[0]+'f'].tell()
       numbersize=2**['b','bb','f','d'].index(self.data_type)
       self.numslices=filesize/(self.nx*self.ny*self.nz*numbersize)
 
