@@ -64,6 +64,7 @@ if __name__=="__main__":
     from TurbAn.Utilities.subs import create_object
     rc = create_object()
     variables=input("Variables to load, e.g. all, min, bx by bz: ").split()
+    rc.vars2load(variables)
     bs,fs,step = ask_for_steps(rc.numslices)
     movieout = input('Output (m)ovies or (s)how plots? [default: s]: ')
     if movieout == '':
