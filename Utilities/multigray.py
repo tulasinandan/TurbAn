@@ -61,7 +61,7 @@ def multigray(rc,variables,bs,fs,step,movieout,cmp):
           print('Please make a valid choice')
 
 if __name__=="__main__":
-    from TurbAn.Utilities.subs import create_object
+    from TurbAn.Utilities.subs import create_object,ask_for_steps
     rc = create_object()
     variables=input("Variables to load, e.g. all, min, bx by bz: ").split()
     rc.vars2load(variables)
