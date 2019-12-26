@@ -14,7 +14,7 @@
 ########################################################
 
 def multigray(rc,variables,bs,fs,step,movieout,cmp):
-    import matplotlib.pylot as plt
+    import matplotlib.pyplot as plt
     import numpy as np
     from TurbAn.Utilities.subs import iplt,imss
     rc.vars2load(variables)
