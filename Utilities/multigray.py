@@ -16,7 +16,7 @@
 def multigray(rc,variables,bs,fs,step,movieout,cmp):
     import matplotlib.pyplot as plt
     import numpy as np
-    from TurbAn.Utilities.subs import iplt,imss
+    from TurbAn.Utilities.subs import iplt,imss,sminmax
     rc.vars2load(variables)
     rcd=rc.__dict__
     
@@ -25,7 +25,7 @@ def multigray(rc,variables,bs,fs,step,movieout,cmp):
     if np.modf(np.sqrt(len(rc.vars2l)))[0] == 0:
        nplotx=int(np.modf(np.sqrt(len(rc.vars2l)))[1])
     else: 
-       nplotx=int(np.modf(sqrt(len(rc.vars2l)))[1]+1)
+       nplotx=int(np.modf(np.sqrt(len(rc.vars2l)))[1]+1)
     f,axarr=plt.subplots(nplotx,nplotx,sharex='col',sharey='row')
     figtitle=f.suptitle('Multiplots')
     
@@ -35,7 +35,8 @@ def multigray(rc,variables,bs,fs,step,movieout,cmp):
        rc.loadslice(it)
     
        for j in rc.vars2l:
-          l,m=rc.vars2l.index(j)/nplotx,np.mod(rc.vars2l.index(j),nplotx)
+          l,m=int(rc.vars2l.index(j)/nplotx),np.mod(rc.vars2l.index(j),nplotx)
+        # print(l,m)
           axarr[l,m].clear()
           if (rc.ny==1 and rc.nz==1):
             #axarr[l,m].plot(rc.xx,rcd[j][:,0,0])
@@ -43,9 +44,9 @@ def multigray(rc,variables,bs,fs,step,movieout,cmp):
           else:
              imss(rcd,j,interpolation="none",ax=axarr[l,m],nolabels=1)
              if l < nplotx-1:
-                setp(axarr[l,m].get_xticklabels(),visible=False)
+                plt.setp(axarr[l,m].get_xticklabels(),visible=False)
              if m > 0:
-                setp(axarr[l,m].get_yticklabels(),visible=False)
+                plt.setp(axarr[l,m].get_yticklabels(),visible=False)
           axarr[l,m].set_title(j+' '+sminmax(rcd[j]),size="x-small")
           axarr[l,m].set_adjustable("box-forced")
        figtitle.set_text('t='+"%.3f"%rc.time)
