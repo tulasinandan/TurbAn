@@ -23,9 +23,8 @@ def minmax(a):
    return a.min(),a.max()
 
 def sminmax(a,prec=3):
-   exec('min="%.'+str(prec)+'f"%a.min()')
-   exec('max="%.'+str(prec)+'f"%a.max()')
-   return '('+min+','+max+')' 
+   j='({0:.'+str(prec)+'f},{1:.'+str(prec)+'f})'
+   return j.format(a.min(),a.max())
 
 def create_object():
    import TurbAn.Interfaces.Simulations as sm
