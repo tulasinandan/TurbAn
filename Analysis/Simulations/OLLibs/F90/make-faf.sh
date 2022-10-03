@@ -7,7 +7,7 @@ export MACH=$1
 fi
 
 if [[ "$MACH" =~ ^(flare) ]]; then
-f2py3 $(\ls *.f90) -lfftw3 -c -m faf 
+f2py3 --f90flags="-fallow-argument-mismatch -O3" $(\ls *.f90) -lfftw3 -c -m faf 
 fi
 
 if [[ "$MACH" =~ ^(goose) ]]; then
